@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasandh · Xorox — AI &amp; Data Science Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0e1a;
+    --panel:#111729;
+    --panel-2:#161f38;
+    --amber:#f5a623;
+    --amber-dim: rgba(245,166,35,0.16);
+    --cyan:#4fd1c5;
+    --text:#e7ecf6;
+    --muted:#8291b3;
+    --line: rgba(231,236,246,0.09);
+    --line-strong: rgba(231,236,246,0.16);
+    --radius: 14px;
+    --maxw: 1160px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 12% -10%, rgba(79,209,197,0.08), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 10%, rgba(245,166,35,0.06), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 12% -10%, rgba(79,209,197,0.08), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 10%, rgba(245,166,35,0.06), transparent 55%),
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: auto, auto, 44px 44px, 44px 44px;
+    background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+  }
+
+  ::selection{ background:var(--amber); color:#161101; }
+
+  a{ color:inherit; text-decoration:none; }
+  img{max-width:100%; display:block;}
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 4px var(--amber-dim);
+    flex-shrink:0;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background:rgba(10,14,26,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{
+    font-family:'Sora', sans-serif; font-weight:700; font-size:1.05rem;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand small{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:400; font-size:0.7rem; color:var(--muted); letter-spacing:0.08em;
+  }
+  .navlinks{ display:flex; gap:34px; align-items:center; }
+  .navlinks a{
+    font-size:0.88rem; color:var(--muted); transition:color .15s ease;
+    position:relative;
+  }
+  .navlinks a:hover{ color:var(--text); }
+  .navcta{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    border:1px solid var(--line-strong); padding:9px 16px; border-radius:8px;
+    color:var(--text); white-space:nowrap;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .navcta:hover{ border-color:var(--amber); background:var(--amber-dim); }
+  .navtoggle{ display:none; background:none; border:none; color:var(--text); cursor:pointer; }
+
+  @media (max-width:760px){
+    .navlinks{
+      position:fixed; inset:64px 0 auto 0; flex-direction:column; align-items:flex-start;
+      background:var(--panel); padding:22px 28px; gap:18px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-130%); transition:transform .25s ease;
+    }
+    .navlinks.open{ transform:translateY(0); }
+    .navtoggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 40px; }
+  .hero h1{
+    font-family:'Sora', sans-serif; font-weight:700;
+    font-size:clamp(2.4rem, 6.4vw, 4.6rem);
+    line-height:1.04; letter-spacing:-0.02em;
+    margin:22px 0 20px;
+    max-width:16ch;
+  }
+  .hero h1 .accent{ color:var(--amber); font-style:italic; font-weight:600; }
+  .hero p.lede{
+    color:var(--muted); font-size:1.08rem; max-width:52ch; margin-bottom:34px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:46px; }
+  .btn{
+    font-family:'JetBrains Mono', monospace; font-size:0.82rem;
+    padding:13px 22px; border-radius:9px; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn-primary{ background:var(--amber); color:#181104; font-weight:600; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(245,166,35,0.55); }
+  .btn-ghost{ border:1px solid var(--line-strong); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px); }
+
+  .status-line{
+    font-family:'JetBrains Mono', monospace; font-size:0.76rem; color:var(--muted);
+    border-top:1px solid var(--line); padding-top:16px;
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .status-line b{ color:var(--cyan); font-weight:500; }
+
+  /* ---------- SIGNAL SCOPE ---------- */
+  .scope{
+    position:relative; margin-top:46px;
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    overflow:hidden;
+    padding:0;
+  }
+  .scope-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 22px; border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--muted);
+  }
+  .scope-head .dots{ display:flex; gap:6px; }
+  .scope-head .dots span{ width:8px; height:8px; border-radius:50%; background:var(--line-strong); }
+  .scope-body{ position:relative; height:220px; }
+  .scope-body svg{ width:100%; height:100%; display:block; }
+  .scope-body path.trace{
+    fill:none; stroke:var(--cyan); stroke-width:1.6; opacity:0.55;
+  }
+  .scope-sweep{
+    position:absolute; top:0; bottom:0; width:26%;
+    background:linear-gradient(90deg, transparent, rgba(245,166,35,0.14), transparent);
+    animation: sweep 6s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes sweep{
+    0%{ transform:translateX(-40%); }
+    100%{ transform:translateX(420%); }
+  }
+  .marker{
+    position:absolute; transform:translate(-50%,-50%);
+    width:12px; height:12px; border-radius:50%;
+    background:var(--amber); cursor:pointer; border:none;
+    box-shadow:0 0 0 0 rgba(245,166,35,0.6);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  .marker:nth-child(2){ animation-delay:.3s; }
+  .marker:nth-child(3){ animation-delay:.6s; }
+  .marker:nth-child(4){ animation-delay:.9s; }
+  .marker:nth-child(5){ animation-delay:1.2s; }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(245,166,35,0.45); }
+    50%{ box-shadow:0 0 0 9px rgba(245,166,35,0); }
+  }
+  .marker .tag{
+    position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+    background:var(--ink); border:1px solid var(--line-strong); border-radius:6px;
+    padding:5px 9px; font-family:'JetBrains Mono', monospace; font-size:0.68rem;
+    color:var(--text); white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity .15s ease, transform .15s ease;
+  }
+  .marker:hover .tag, .marker:focus-visible .tag{ opacity:1; transform:translateX(-50%) translateY(-4px); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:96px 0; border-top:1px solid var(--line); }
+  .section-head{ margin-bottom:44px; }
+  .section-head h2{
+    font-family:'Sora', sans-serif; font-weight:700; font-size:clamp(1.7rem,3.4vw,2.5rem);
+    margin-top:10px; letter-spacing:-0.01em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:start;
+  }
+  .about-grid p{ color:var(--muted); font-size:1.02rem; max-width:56ch; }
+  .about-grid p + p{ margin-top:16px; }
+  .specs{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel);
+    padding:6px 0;
+  }
+  .specs .row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 20px; border-bottom:1px solid var(--line);
+    font-family:'JetBrains Mono', monospace; font-size:0.8rem;
+  }
+  .specs .row:last-child{ border-bottom:none; }
+  .specs .row span:first-child{ color:var(--muted); }
+  .specs .row span:last-child{ color:var(--text); text-align:right; }
+
+  @media (max-width:860px){
+    .about-grid{ grid-template-columns:1fr; gap:36px; }
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .log{ display:flex; flex-direction:column; gap:16px; }
+  .entry{
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel);
+    padding:26px 28px;
+    display:grid; grid-template-columns:150px 1fr; gap:26px;
+    transition:border-color .18s ease, transform .18s ease, background .18s ease;
+    scroll-margin-top:100px;
+  }
+  .entry:hover{ border-color:var(--line-strong); background:var(--panel-2); transform:translateY(-2px); }
+  .entry .domain{
+    font-family:'JetBrains Mono', monospace; font-size:0.68rem; letter-spacing:0.1em;
+    color:var(--amber); text-transform:uppercase; align-self:start;
+  }
+  .entry .domain small{
+    display:block; margin-top:6px; color:var(--muted); font-size:0.66rem; letter-spacing:0.06em;
+  }
+  .entry h3{
+    font-family:'Sora', sans-serif; font-size:1.24rem; font-weight:600; margin-bottom:8px;
+  }
+  .entry p{ color:var(--muted); font-size:0.96rem; max-width:64ch; margin-bottom:16px; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem;
+    border:1px solid var(--line-strong); border-radius:6px; padding:5px 10px;
+    color:var(--cyan);
+  }
+  @media (max-width:640px){
+    .entry{ grid-template-columns:1fr; gap:12px; }
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  .skill-cell{ background:var(--panel); padding:24px 26px; }
+  .skill-cell .label{
+    font-family:'JetBrains Mono', monospace; font-size:0.7rem; letter-spacing:0.1em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:14px;
+  }
+  .skill-cell ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .skill-cell li{ font-size:0.94rem; color:var(--text); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    display:flex; flex-direction:column; align-items:flex-start; gap:28px;
+  }
+  .contact h2{
+    font-family:'Sora', sans-serif; font-weight:700;
+    font-size:clamp(2rem,5vw,3.4rem); max-width:16ch; letter-spacing:-0.02em;
+  }
+  .contact-links{ display:flex; gap:16px; flex-wrap:wrap; }
+
+  footer{
+    border-top:1px solid var(--line); padding:28px 0;
+    font-family:'JetBrains Mono', monospace; font-size:0.74rem; color:var(--muted);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .scope-sweep, .marker{ animation:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">PRASANDH <small>/ XOROX</small></div>
+    <div class="navlinks" id="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="navcta">Get in touch</a>
+    </div>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-bottom:0;">
+    <div class="eyebrow">SIGNAL LOG — AI &amp; DATA SCIENCE ENGINEER</div>
+    <h1>Finding the <span class="accent">signal</span> in the noise.</h1>
+    <p class="lede">
+      Final-year AI &amp; Data Science student building systems that catch what shouldn't be there —
+      vessels going dark over protected waters, defect-prone code before it ships, at-risk vitals,
+      payments that fail silently. Currently interning with Infosys Springboard, building BillSphere.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#work">View the work →</a>
+      <a class="btn btn-ghost" href="mailto:youremail@example.com">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/Prasandh25" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <div class="scope">
+      <div class="scope-head">
+        <span>WAVEFORM.LOG — 5 ANOMALIES FLAGGED</span>
+        <div class="dots"><span></span><span></span><span></span></div>
+      </div>
+      <div class="scope-body" id="scopeBody">
+        <div class="scope-sweep"></div>
+        <svg viewBox="0 0 1200 220" preserveAspectRatio="none">
+          <path class="trace" d="M0,110 L40,113 L80,108 L120,111
+            L145,110 L150,44 L155,176 L160,110
+            L200,109 L240,114 L280,107 L320,110 L360,113 L390,109
+            L395,110 L400,32 L405,188 L410,110
+            L450,112 L490,108 L530,113 L560,110 L590,109
+            L615,110 L620,50 L625,170 L630,110
+            L670,113 L710,108 L750,112 L790,110 L820,108
+            L845,110 L850,38 L855,182 L860,110
+            L900,112 L940,109 L980,113 L1020,110 L1050,108
+            L1075,110 L1080,44 L1085,176 L1090,110
+            L1130,112 L1160,109 L1200,110"/>
+        </svg>
+        <button class="marker" style="left:12.5%; top:20%;" data-target="fishing">
+          <span class="tag">SIG_01 · MARITIME</span>
+        </button>
+        <button class="marker" style="left:33.3%; top:14.5%;" data-target="vitalsense">
+          <span class="tag">SIG_02 · HEALTHCARE</span>
+        </button>
+        <button class="marker" style="left:51.7%; top:22.7%;" data-target="defectsense">
+          <span class="tag">SIG_03 · SOFTWARE</span>
+        </button>
+        <button class="marker" style="left:70.8%; top:17.3%;" data-target="specsense">
+          <span class="tag">SIG_04 · NLP / RAG</span>
+        </button>
+        <button class="marker" style="left:90%; top:20%;" data-target="billsphere">
+          <span class="tag">SIG_05 · FINTECH</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="status-line">
+      <span>STATUS:</span>
+      <b>Building BillSphere @ Infosys Springboard</b>
+      <span>·</span> <span>CIET, Coimbatore</span>
+      <span>·</span> <span>CGPA 8.85</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head">
+      <div class="eyebrow">ABOUT</div>
+      <h2>Reads noisy systems for a living.</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm Prasandh — final-year AI &amp; Data Science student at Coimbatore Institute of
+          Engineering and Technology, working toward a career as an ML engineer. Most of what I build
+          comes back to one question: how do you tell a real signal from noise — in AIS tracking data,
+          in vitals, in a codebase, in a stream of payments.
+        </p>
+        <p>
+          Right now that means building BillSphere, a recurring-payment and subscription platform,
+          as part of a virtual internship with Infosys Springboard. Outside of models and migrations,
+          I'm working on spoken English and touch-typing, one structured block at a time — and prepping
+          for GATE DA 2027 as a path toward an M.Tech or a master's abroad.
+        </p>
+      </div>
+      <div class="specs mono">
+        <div class="row"><span>LOCATION</span><span>Krishnagiri, Tamil Nadu, IN</span></div>
+        <div class="row"><span>ROLE TARGET</span><span>ML Engineer (Fresher)</span></div>
+        <div class="row"><span>CURRENT</span><span>Infosys Springboard — BillSphere</span></div>
+        <div class="row"><span>EDUCATION</span><span>B.Tech AI &amp; DS, CIET · CGPA 8.85</span></div>
+        <div class="row"><span>NEXT</span><span>GATE DA — Feb 2027</span></div>
+        <div class="row"><span>REACH</span><span>github.com/Prasandh25</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-head">
+      <div class="eyebrow">DETECTION LOG</div>
+      <h2>Five signals, five domains.</h2>
+    </div>
+    <div class="log">
+
+      <div class="entry" id="fishing">
+        <div class="domain">MARITIME<small>SDG 14</small></div>
+        <div>
+          <h3>AIS Illegal Fishing Detection</h3>
+          <p>Flags anomalous vessel movement in AIS tracking data to surface illegal fishing activity
+            inside Marine Protected Areas — geospatial pattern-spotting applied to open ocean data.</p>
+          <div class="chips">
+            <span class="chip">Geospatial analysis</span>
+            <span class="chip">Anomaly detection</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="vitalsense">
+        <div class="domain">HEALTHCARE<small>Ensemble ML</small></div>
+        <div>
+          <h3>VitalSense Ultra 2.0</h3>
+          <p>Multi-disease risk dashboard scoring five tiers of risk with a Gradient Boosting +
+            Random Forest voting ensemble, paired with a built-in chatbot and a live model-comparison arena.</p>
+          <div class="chips">
+            <span class="chip">Streamlit</span>
+            <span class="chip">scikit-learn</span>
+            <span class="chip">Ensemble ML</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="defectsense">
+        <div class="domain">SOFTWARE<small>Predictive QA</small></div>
+        <div>
+          <h3>DefectSense</h3>
+          <p>Predicts software defects before they ship by combining CNN-based feature extraction with
+            gradient boosting — catching a different kind of anomaly, this time in a codebase.</p>
+          <div class="chips">
+            <span class="chip">CNN</span>
+            <span class="chip">Gradient boosting</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="specsense">
+        <div class="domain">NLP / RAG<small>Comparison tool</small></div>
+        <div>
+          <h3>SpecSense</h3>
+          <p>Compares laptop specifications in plain language using retrieval-augmented generation,
+            instead of leaving people to parse dense spec sheets on their own.</p>
+          <div class="chips">
+            <span class="chip">NLP</span>
+            <span class="chip">RAG</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="billsphere">
+        <div class="domain">FINTECH<small>In progress</small></div>
+        <div>
+          <h3>BillSphere</h3>
+          <p>Recurring payment and subscription platform built during my Infosys Springboard
+            internship: lifecycle state machines, role-based JWT auth, Celery-scheduled billing,
+            a mock payment gateway with configurable failure rates, proration, refunds, and PDF invoicing.</p>
+          <div class="chips">
+            <span class="chip">FastAPI</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Celery</span>
+            <span class="chip">React + TypeScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head">
+      <div class="eyebrow">SYSTEMS</div>
+      <h2>What's under the hood.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <div class="label">Languages</div>
+        <ul><li>Python</li><li>SQL</li><li>TypeScript</li></ul>
+      </div>
+      <div class="skill-cell">
+        <div class="label">ML / Data Science</div>
+        <ul><li>scikit-learn</li><li>Ensemble methods</li><li>Anomaly detection</li><li>pandas</li></ul>
+      </div>
+      <div class="skill-cell">
+        <div class="label">Backend</div>
+        <ul><li>FastAPI</li><li>PostgreSQL</li><li>Celery</li><li>Redis</li></ul>
+      </div>
+      <div class="skill-cell">
+        <div class="label">Frontend</div>
+        <ul><li>React</li><li>TypeScript</li></ul>
+      </div>
+      <div class="skill-cell">
+        <div class="label">Tools &amp; Platforms</div>
+        <ul><li>Git</li><li>PyCharm</li><li>AWS (in progress)</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact">
+      <div class="eyebrow">GET IN TOUCH</div>
+      <h2>Have a role, a project, or a signal worth chasing?</h2>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:youremail@example.com">Email me →</a>
+        <a class="btn btn-ghost" href="https://github.com/Prasandh25" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 PRASANDH — BUILT FROM SCRATCH, NO TEMPLATE.</span>
+  <span>KRISHNAGIRI, TAMIL NADU</span>
+</footer>
+
+<script>
+  const navtoggle = document.getElementById('navtoggle');
+  const navlinks = document.getElementById('navlinks');
+  navtoggle.addEventListener('click', () => navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+  document.querySelectorAll('.marker').forEach(m => {
+    m.addEventListener('click', () => {
+      const target = document.getElementById(m.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+</script>
+
+</body>
+</html>

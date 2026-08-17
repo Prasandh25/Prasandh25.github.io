@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prasandh · Xorox — AI &amp; Data Science Engineer</title>
+<title>Prasandh — AI &amp; Data Science Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -308,7 +308,7 @@
 
 <header>
   <nav class="wrap">
-    <div class="brand">PRASANDH <small>/ XOROX</small></div>
+    <div class="brand">PRASANDH</div>
     <div class="navlinks" id="navlinks">
       <a href="#work">Work</a>
       <a href="#about">About</a>
@@ -327,8 +327,8 @@
     <h1>Finding the <span class="accent">signal</span> in the noise.</h1>
     <p class="lede">
       Final-year AI &amp; Data Science student building systems that catch what shouldn't be there —
-      vessels going dark over protected waters, defect-prone code before it ships, at-risk vitals,
-      payments that fail silently. Currently interning with Infosys Springboard, building BillSphere.
+      at-risk vitals, payments that fail silently, cyber attacks hiding in network traffic.
+      Currently interning with Infosys Springboard, building BillSphere.
     </p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#work">View the work →</a>
@@ -338,7 +338,7 @@
 
     <div class="scope">
       <div class="scope-head">
-        <span>WAVEFORM.LOG — 5 ANOMALIES FLAGGED</span>
+        <span>WAVEFORM.LOG — 3 ANOMALIES FLAGGED</span>
         <div class="dots"><span></span><span></span><span></span></div>
       </div>
       <div class="scope-body" id="scopeBody">
@@ -356,20 +356,14 @@
             L1075,110 L1080,44 L1085,176 L1090,110
             L1130,112 L1160,109 L1200,110"/>
         </svg>
-        <button class="marker" style="left:12.5%; top:20%;" data-target="fishing">
-          <span class="tag">SIG_01 · MARITIME</span>
+        <button class="marker" style="left:12.5%; top:20%;" data-target="billsphere">
+          <span class="tag">SIG_01 · FINTECH</span>
         </button>
-        <button class="marker" style="left:33.3%; top:14.5%;" data-target="vitalsense">
-          <span class="tag">SIG_02 · HEALTHCARE</span>
+        <button class="marker" style="left:51.7%; top:22.7%;" data-target="cybershield">
+          <span class="tag">SIG_02 · CYBERSECURITY</span>
         </button>
-        <button class="marker" style="left:51.7%; top:22.7%;" data-target="defectsense">
-          <span class="tag">SIG_03 · SOFTWARE</span>
-        </button>
-        <button class="marker" style="left:70.8%; top:17.3%;" data-target="specsense">
-          <span class="tag">SIG_04 · NLP / RAG</span>
-        </button>
-        <button class="marker" style="left:90%; top:20%;" data-target="billsphere">
-          <span class="tag">SIG_05 · FINTECH</span>
+        <button class="marker" style="left:90%; top:20%;" data-target="vitalsense">
+          <span class="tag">SIG_03 · HEALTHCARE</span>
         </button>
       </div>
     </div>
@@ -418,20 +412,39 @@
   <section id="work">
     <div class="section-head">
       <div class="eyebrow">DETECTION LOG</div>
-      <h2>Five signals, five domains.</h2>
+      <h2>Three signals, three domains.</h2>
     </div>
     <div class="log">
 
-      <div class="entry" id="fishing">
-        <div class="domain">MARITIME<small>SDG 14</small></div>
+      <div class="entry" id="billsphere">
+        <div class="domain">FINTECH<small>In progress</small></div>
         <div>
-          <h3>AIS Illegal Fishing Detection</h3>
-          <p>Flags anomalous vessel movement in AIS tracking data to surface illegal fishing activity
-            inside Marine Protected Areas — geospatial pattern-spotting applied to open ocean data.</p>
+          <h3>BillSphere</h3>
+          <p>Recurring payment and subscription platform built during my Infosys Springboard
+            internship: lifecycle state machines, role-based JWT auth, Celery-scheduled billing,
+            a mock payment gateway with configurable failure rates, proration, refunds, and PDF invoicing.</p>
           <div class="chips">
-            <span class="chip">Geospatial analysis</span>
-            <span class="chip">Anomaly detection</span>
-            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Celery</span>
+            <span class="chip">React + TypeScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="cybershield">
+        <div class="domain">CYBERSECURITY<small>SDG 9, 16 · In progress</small></div>
+        <div>
+          <h3>CyberShield AI</h3>
+          <p>Final-year team project building an explainable intrusion detection system — one that
+            doesn't just flag an attack but shows why, using SHAP and LIME to make a machine learning
+            model's decisions readable to a security analyst. Layers in cyber threat intelligence,
+            risk scoring, attack visualization, and mitigation recommendations on top of detection.</p>
+          <div class="chips">
+            <span class="chip">Machine Learning</span>
+            <span class="chip">SHAP / LIME</span>
+            <span class="chip">Explainable AI</span>
+            <span class="chip">Threat Intelligence</span>
           </div>
         </div>
       </div>
@@ -446,49 +459,6 @@
             <span class="chip">Streamlit</span>
             <span class="chip">scikit-learn</span>
             <span class="chip">Ensemble ML</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry" id="defectsense">
-        <div class="domain">SOFTWARE<small>Predictive QA</small></div>
-        <div>
-          <h3>DefectSense</h3>
-          <p>Predicts software defects before they ship by combining CNN-based feature extraction with
-            gradient boosting — catching a different kind of anomaly, this time in a codebase.</p>
-          <div class="chips">
-            <span class="chip">CNN</span>
-            <span class="chip">Gradient boosting</span>
-            <span class="chip">Python</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry" id="specsense">
-        <div class="domain">NLP / RAG<small>Comparison tool</small></div>
-        <div>
-          <h3>SpecSense</h3>
-          <p>Compares laptop specifications in plain language using retrieval-augmented generation,
-            instead of leaving people to parse dense spec sheets on their own.</p>
-          <div class="chips">
-            <span class="chip">NLP</span>
-            <span class="chip">RAG</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="entry" id="billsphere">
-        <div class="domain">FINTECH<small>In progress</small></div>
-        <div>
-          <h3>BillSphere</h3>
-          <p>Recurring payment and subscription platform built during my Infosys Springboard
-            internship: lifecycle state machines, role-based JWT auth, Celery-scheduled billing,
-            a mock payment gateway with configurable failure rates, proration, refunds, and PDF invoicing.</p>
-          <div class="chips">
-            <span class="chip">FastAPI</span>
-            <span class="chip">PostgreSQL</span>
-            <span class="chip">Celery</span>
-            <span class="chip">React + TypeScript</span>
           </div>
         </div>
       </div>
